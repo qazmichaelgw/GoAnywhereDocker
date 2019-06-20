@@ -1,0 +1,19 @@
+#!/bin/bash
+XSOCK=/tmp/.X11-unix
+XAUTH=/tmp/.docker.xauth
+touch $XAUTH
+xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
+
+CODE_FOLDER=/home/gaowei/intention_net_journal
+DATA_FOLDER=/home/gaowei/NavCamp
+nvidia-docker run -it \
+    -p 6006:6006 \
+    --volume /tmp/.X11-unix:/tmp/.X11-unix:rw \
+    --volume /tmp/.docker.xauth:/tmp/.docker.xauth:rw \
+    --env "XAUTHORITY=/tmp/.docker.xauth" \
+    --env "DISPLAY" \
+    --volume $CODE_FOLDER:/mnt \
+    --volume $DATA_FOLDER:/data \
+    --user 0:0 \
+    qazmichaelgw/inet:latest \
+    bash
