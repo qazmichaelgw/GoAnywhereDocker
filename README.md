@@ -10,8 +10,11 @@
   envorionment variable of CODE_FOLDER and DATA_FOLDER to the absolute path in
   the host machine. 
 
+`
 export CODE_FOLDER=/home/gaowei/intention_net_journal
+
 export DATA_FOLDER=/home/gaowei/NavCamp
+`
 
 - Run docker.run for the running environment.
 
