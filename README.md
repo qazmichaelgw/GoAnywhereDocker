@@ -11,8 +11,8 @@
   the host machine. 
 
 ```
-export CODE_FOLDER=/home/gaowei/intention_net_journal
-export DATA_FOLDER=/home/gaowei/NavCamp
+export CODE_FOLDER=your_code_folder e.g. /home/gaowei/intention_net_journal
+export DATA_FOLDER=your_data_folder e.g. /home/gaowei/NavCamp
 ```
 
 - Run docker.run for the running environment.
