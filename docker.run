@@ -1,11 +1,12 @@
 #!/bin/bash
+# only need to run once
+"""
 XSOCK=/tmp/.X11-unix
 XAUTH=/tmp/.docker.xauth
 touch $XAUTH
 xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
+"""
 
-CODE_FOLDER=/home/gaowei/intention_net_journal
-DATA_FOLDER=/home/gaowei/NavCamp
 nvidia-docker run -it \
     -p 6006:6006 \
     --volume /tmp/.X11-unix:/tmp/.X11-unix:rw \
