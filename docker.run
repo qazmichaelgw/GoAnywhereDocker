@@ -1,11 +1,9 @@
 #!/bin/bash
-# only need to run once
-"""
-XSOCK=/tmp/.X11-unix
-XAUTH=/tmp/.docker.xauth
-touch $XAUTH
-xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
-"""
+# only need to run the following auth once
+#XSOCK=/tmp/.X11-unix
+#XAUTH=/tmp/.docker.xauth
+#touch $XAUTH
+#xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 
 nvidia-docker run -it \
     -p 6006:6006 \
