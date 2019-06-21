@@ -6,7 +6,6 @@
 #xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 
 nvidia-docker run -it \
-    -p 6006:6006 \
     --volume /tmp/.X11-unix:/tmp/.X11-unix:rw \
     --volume /tmp/.docker.xauth:/tmp/.docker.xauth:rw \
     --env "XAUTHORITY=/tmp/.docker.xauth" \
