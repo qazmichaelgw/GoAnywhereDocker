@@ -12,6 +12,7 @@ nvidia-docker run -it \
     --env "DISPLAY" \
     --volume $CODE_FOLDER:/mnt \
     --volume $DATA_FOLDER:/data \
+    --privileged \
     --user 0:0 \
     qazmichaelgw/inet:latest \
     bash
