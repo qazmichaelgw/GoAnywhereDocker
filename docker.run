@@ -4,6 +4,8 @@
 #XAUTH=/tmp/.docker.xauth
 #touch $XAUTH
 #xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
+TARGET=qazmichaelgw/inet:latest
+docker pull $TARGET
 
 nvidia-docker run -it \
     --rm \
@@ -15,5 +17,5 @@ nvidia-docker run -it \
     --volume $DATA_FOLDER:/data \
     --privileged \
     --user 0:0 \
-    qazmichaelgw/inet:latest \
+    $TARGET \
     bash
