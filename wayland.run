@@ -1,0 +1,36 @@
+#!/bin/sh
+
+image=qazmichaelgw/carla:latest
+container=wayland
+
+cleanup() {
+    docker stop $container >/dev/null
+    docker rm $container >/dev/null
+}
+
+running=$(docker ps -a -q --filter "name=${container}")
+if [ -n "$running" ]; then
+    cleanup
+fi
+
+nvidia-docker run -it \
+    -p 2000-2002:2000-2002 \
+    --name $container \
+    --device=/dev/dri/card0:/dev/dri/card0 \
+    --device=/dev/dri/renderD128:/dev/dri/renderD128 \
+    --volume $CODE_FOLDER:/mnt \
+    $image \
+    bash
+
+finally() {
+    #docker cp $container:/var/log/supervisor/graphical-app-launcher.log - | tar xO
+    #result=$(docker cp $container:/tmp/graphical-app.return_code - | tar xO)
+    cleanup
+    echo "finally.."
+    exit $result
+}
+
+#trap "docker stop $container >/dev/null && echo trapped && finally" SIGINT SIGTERM
+#docker wait $container >/dev/null
+
+finally
