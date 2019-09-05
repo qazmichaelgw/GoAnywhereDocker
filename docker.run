@@ -9,6 +9,7 @@ docker pull $TARGET
 
 nvidia-docker run -it \
     --rm \
+    --net=host \
     --volume /tmp/.X11-unix:/tmp/.X11-unix:rw \
     --volume /tmp/.docker.xauth:/tmp/.docker.xauth:rw \
     --env "XAUTHORITY=/tmp/.docker.xauth" \
